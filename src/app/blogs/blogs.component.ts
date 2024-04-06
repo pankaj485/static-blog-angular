@@ -33,8 +33,6 @@ export class BlogsComponent {
 
   openBlog(blogId: string) {
     this.router.navigateByUrl(`blog/${blogId}`);
-    // Copy the text inside the text field
-    navigator.clipboard.writeText(JSON.stringify(this.blogPosts));
   }
 
   public getBlogs() {
