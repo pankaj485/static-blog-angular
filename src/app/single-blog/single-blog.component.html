@@ -32,6 +32,12 @@
     background-color: rgb(249, 249, 249);
   "
 >
+  @if(!isValidBlogfound){
+
+  <h4>Invalid blog requested. No data found</h4>
+
+  } @else {
+
   <h2>{{ blog.title }} {{ blog.id }}</h2>
 
   <div>
@@ -48,4 +54,5 @@
     </p>
     <p>{{ blog.publishedDate }}</p>
   </div>
+  }
 </div>

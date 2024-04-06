@@ -15,11 +15,18 @@ export class SingleBlogComponent {
   blogs = blogData;
   blog!: BlogItem;
   leftArrowIcon = '../../assets/left-arrow-svgrepo-com.svg';
+  isValidBlogfound: boolean = false;
 
   constructor(private activeRoute: ActivatedRoute) {
     this.activeRoute.params.subscribe((res: any) => {
       this.blogId = res.id;
-      this.blog = this.blogs.filter((blog) => blog.id === this.blogId)[0];
+      const matchingBlogs = this.blogs.filter(
+        (blog) => blog.id === this.blogId
+      );
+      if (matchingBlogs.length > 1) {
+        this.blog = matchingBlogs[0];
+        this.isValidBlogfound = true;
+      }
       console.log('valid blog: ', this.blog);
     });
   }
