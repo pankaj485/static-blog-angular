@@ -1,1 +1,42 @@
-<p>blogs works!</p>
+<!-- <h1>Blogs</h1> -->
+
+<section id="blogsSection">
+  @for(blog of blogPosts; track blog.id){
+
+  <div
+    class="blogcard"
+    style="
+      display: flex;
+      flex-direction: column;
+      max-width: 700px;
+      margin: auto;
+      border: 1px solid black;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      background-color: rgb(249, 249, 249);
+    "
+  >
+    <h2>{{ blog.title }} {{ blog.id }}</h2>
+
+    <div>
+      <h4>
+        {{ blog.description }}
+      </h4>
+
+      <p>
+        {{ blog.content }}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        <b> Authored by: {{ blog.author }} </b>
+      </p>
+      <p>{{ blog.publishedDate }}</p>
+    </div>
+  </div>
+
+  }@empty {
+  <h2>No blogs found</h2>
+  }
+</section>
