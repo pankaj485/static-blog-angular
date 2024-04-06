@@ -23,7 +23,20 @@
         {{ blog.description }}
       </h4>
 
-      <p>{{ blog.content }} see more...</p>
+      <p>
+        {{ blog.content }}
+        <a
+          [routerLink]="'/blog/' + blog.id"
+          style="
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            color: rgba(36, 36, 186, 0.737);
+          "
+        >
+          see more...
+        </a>
+      </p>
     </div>
 
     <div>

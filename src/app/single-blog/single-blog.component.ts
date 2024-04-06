@@ -23,7 +23,7 @@ export class SingleBlogComponent {
       const matchingBlogs = this.blogs.filter(
         (blog) => blog.id === this.blogId
       );
-      if (matchingBlogs.length > 1) {
+      if (matchingBlogs.length > 0) {
         this.blog = matchingBlogs[0];
         this.isValidBlogfound = true;
       }

@@ -22,7 +22,12 @@ export class BlogsComponent {
     id: String(Date.now()),
   };
 
-  blogPosts = blogData;
+  blogPosts = blogData.map((currentBlog) => {
+    const { content } = currentBlog;
+    return Object.assign({}, currentBlog, {
+      content: content.substring(0, 99),
+    });
+  });
 
   constructor(private router: Router) {}
 
