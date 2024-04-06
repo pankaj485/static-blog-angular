@@ -2,7 +2,7 @@ interface BlogItem {
   title: string;
   description: string;
   content: string;
-  publishedDate: Date;
+  publishedDate: string;
   author: string;
   id: string;
 }

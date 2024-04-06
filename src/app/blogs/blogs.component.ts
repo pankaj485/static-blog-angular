@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogItem } from '../types/blog.types';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-blogs',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './blogs.component.html',
   styleUrl: './blogs.component.css',
 })
@@ -15,7 +17,7 @@ export class BlogsComponent {
     description: 'This is the main content of the blog',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam iste earum quae atque non dolorem laudantium libero excepturi voluptates deleniti aliquid debitis eligendi, eveniet maxime alias ad eaque nihil rerum odit officia? Dolore vitae corrupti recusandae fugiat expedita voluptate veniam voluptas, repudiandae mollitia assumenda nostrum aperiam similique nihil, sunt totam ipsa illo ipsum quae reiciendis fuga. Sequi fugiat ea nesciunt.',
-    publishedDate: new Date(Date.now()),
+    publishedDate: String(new Date(Date.now())),
     id: String(Date.now()),
   };
 
@@ -38,9 +40,11 @@ export class BlogsComponent {
       const title = `${this.sampleblog['title']} ${i + 1}`;
       const author = `${this.sampleblog['author']} ${i + 1}`;
       const id = this.generateBlogId();
+      const publishedDate = String(new Date(Date.now()));
+
       const blogData = Object.assign(
         {},
-        { ...this.sampleblog, ...{ title, author, id } }
+        { ...this.sampleblog, ...{ title, author, id, publishedDate } }
       );
       this.blogPosts.push(blogData);
     }

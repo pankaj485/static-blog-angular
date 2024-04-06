@@ -23,9 +23,7 @@
         {{ blog.description }}
       </h4>
 
-      <p>
-        {{ blog.content }}
-      </p>
+      <p>{{ blog.content }} see more...</p>
     </div>
 
     <div>
@@ -33,6 +31,22 @@
         <b> Authored by: {{ blog.author }} </b>
       </p>
       <p>{{ blog.publishedDate }}</p>
+    </div>
+
+    <div>
+      <button style="padding: 0.4rem">
+        <a
+          [routerLink]="blog.id"
+          style="
+            text-decoration: none;
+            color: inherit;
+            font-weight: 600;
+            font-size: inherit;
+          "
+        >
+          Read Full Blog
+        </a>
+      </button>
     </div>
   </div>
 
