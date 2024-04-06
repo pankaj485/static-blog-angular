@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogItem } from '../types/blog.types';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { blogData } from '../database/blogs.db';
 
 @Component({
   selector: 'app-blogs',
@@ -21,36 +22,21 @@ export class BlogsComponent {
     id: String(Date.now()),
   };
 
-  blogPosts: BlogItem[] = [];
+  blogPosts = blogData;
 
-  generateBlogId() {
-    let prefix = '';
-    let suffix = '';
-    for (let i = 0; i < 4; i++) {
-      prefix += Math.floor(Math.random() * 5);
-    }
-    for (let i = 0; i < 3; i++) {
-      suffix += Math.floor(Math.random() * 5);
-    }
-    return `${prefix}${Date.now()}${suffix}`;
+  constructor(private router: Router) {}
+
+  openBlog(blogId: string) {
+    this.router.navigateByUrl(`blog/${blogId}`);
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(JSON.stringify(this.blogPosts));
   }
 
-  createData() {
-    for (let i = 0; i < 10; i++) {
-      const title = `${this.sampleblog['title']} ${i + 1}`;
-      const author = `${this.sampleblog['author']} ${i + 1}`;
-      const id = this.generateBlogId();
-      const publishedDate = String(new Date(Date.now()));
-
-      const blogData = Object.assign(
-        {},
-        { ...this.sampleblog, ...{ title, author, id, publishedDate } }
-      );
-      this.blogPosts.push(blogData);
-    }
+  public getBlogs() {
+    return this.blogPosts;
   }
 
   ngOnInit() {
-    this.createData();
+    // this.createData();
   }
 }

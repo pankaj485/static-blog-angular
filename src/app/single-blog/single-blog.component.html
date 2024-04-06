@@ -1,0 +1,51 @@
+<div style="max-width: 700px; margin: auto; margin-bottom: 2rem">
+  <button style="padding: 0.4rem; margin-left: -1rem">
+    <a
+      [routerLink]="'/'"
+      style="
+        text-decoration: none;
+        color: inherit;
+        font-weight: 600;
+        font-size: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      "
+    >
+      <img style="width: 14px" src="{{ leftArrowIcon }}" alt="" />
+      <span> Home </span>
+    </a>
+  </button>
+</div>
+
+<div
+  class="sampleblogcard"
+  style="
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: auto;
+    border: 1px solid black;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background-color: rgb(249, 249, 249);
+  "
+>
+  <h2>{{ blog.title }} {{ blog.id }}</h2>
+
+  <div>
+    <h4>
+      {{ blog.description }}
+    </h4>
+
+    <p>{{ blog.content }} see more...</p>
+  </div>
+
+  <div>
+    <p>
+      <b> Authored by: {{ blog.author }} </b>
+    </p>
+    <p>{{ blog.publishedDate }}</p>
+  </div>
+</div>

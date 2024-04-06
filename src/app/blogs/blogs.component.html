@@ -36,7 +36,8 @@
     <div>
       <button style="padding: 0.4rem">
         <a
-          [routerLink]="blog.id"
+          [routerLink]="'/blog/' + blog.id"
+          (click)="openBlog(blog.id)"
           style="
             text-decoration: none;
             color: inherit;
